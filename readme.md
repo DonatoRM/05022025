@@ -1,6 +1,8 @@
-# Trabajos pendientes
+# Ejercicio **DOM**
+## Funciones para realizar hoy en la tarea
 
-## Funciones para realizar hoy en casa
-
-1. Configurar **Visual Studio Code** con atajos de teclado para que realicen funciones automáticamente (sobre todo para completar los metas).
-2. Estudiar bien el DOM, así como los métodos de cada uno de los nodos para modificarlos o recorrer el DOM (ver lo subido al Classroom). 
+* Crea tareas iniciales, completadas y pendientes.
+* Agrega las tareas en pendiente, completada.
+* Las tareas iniciales (CSS) están por defecto en negro, cambia a rojo las pendientes y verde las completadas.
+* Agrega botones de completar y filtrar tareas (pendiente o completada) cuando la tarea esta completada baja a la lista de tareas completadas.
+* Modifica el alert por un texto bajo el input (Por favor agregar tarea).

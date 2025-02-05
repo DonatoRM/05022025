@@ -1,0 +1,32 @@
+{
+  "name": "05022025",
+  "version": "0.0.1",
+  "description": "Ejercicios día 02/02/2025",
+  "main": "index.js",
+  "scripts": {
+    "start": "start .\\public\\ramos_donato_ejercicioDOM.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/DonatoRM/05022025.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Donato Ramos Martínez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DonatoRM/05022025/issues"
+  },
+  "homepage": "https://github.com/DonatoRM/05022025#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "eslint": "^9.19.0",
+    "eslint-config-prettier": "^10.0.1",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2"
+  }
+}
