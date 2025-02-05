@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Donato Ramos Martínez" />
+    <meta name="description" content="Ejercicio DOM" />
+    <meta name="keywords" content="html,css,javascript" />
+    <title>Manipulación del DOM - LISTA DE TAREAS</title>
+  </head>
+  <body>
+    <h1>Lista de Tareas</h1>
+    <input type="text" id="tareaInput" placeholder="Escribe una tarea" />
+    <p id="error"></p>
+    <button id="agregarTarea">Agregar Tarea</button>
+    <ul id="listaTareas"></ul>
+    <section>
+      <header>
+        <h2>Tareas completadas</h2>
+      </header>
+      <ul id="completadas"></ul>
+    </section>
+
+    <script>
+      //Seleccionamos elementos del DOM
+      const inputTarea = document.getElementById('tareaInput'); //Input de text
+      const botonAgregar = document.getElementById('agregarTarea'); //Botón
+      const listaTareas = document.getElementById('listaTareas'); //Lista de tareas <ul>
+      const completadas = document.getElementById('completadas');
+      const error = document.getElementById('error');
+
+      //Agregar un evento al botón para agregar tareas
+      botonAgregar.addEventListener('click', function () {
+        //Verificamos si el input no esta vacío
+        if (inputTarea.value.trim() !== '') {
+          //Creamos un elemento nuevo <li>
+          const nuevaTarea = document.createElement('li');
+          //Añadimos el texto del input al nuevo <li>
+          nuevaTarea.textContent = inputTarea.value;
+          // Añadir botón Pendiente
+          const btnPendiente = document.createElement('button');
+          // Añadir atributos del botón
+          btnPendiente.setAttribute('type', 'button');
+          btnPendiente.setAttribute('class', 'pendiente');
+          // Añadir el texto del botón
+          btnPendiente.textContent = 'Pendiente';
+          // Añadir el controlador del evento del botón
+          btnPendiente.addEventListener(
+            'click',
+            () => {
+              /* Como cada botón está dentro de un li cargamos el li */
+              const parentButton = btnPendiente.parentNode;
+              // y le doy el color verde (como dice el enunciado)
+              parentButton.style.color = 'red';
+            },
+            false
+          );
+          // Añadimos el botón en la nueva Tarea
+          nuevaTarea.appendChild(btnPendiente);
+          // Creamos el botón de completada
+          const btnCompletada = document.createElement('button');
+          // Añadimos los atributos
+          btnCompletada.setAttribute('type', 'button');
+          btnCompletada.setAttribute('class', 'pendiente');
+          // Añadimos el texto del botón
+          btnCompletada.textContent = 'Completada';
+          // Añadimos el controlador de los eventos
+          btnCompletada.addEventListener(
+            'click',
+            () => {
+              // Leemos el li al que pertenece el botón
+              const parentButton = btnCompletada.parentNode;
+              // clonamos el li
+              const clonNodoLista = parentButton.cloneNode(true);
+              // Le cambiamos el color a verde
+              clonNodoLista.style.color = 'green';
+              // seleccionamos los botones que están dentro del clon
+              const buttons = clonNodoLista.querySelectorAll('button');
+              // Borramos los botones del clon
+              buttons.forEach(btn => clonNodoLista.removeChild(btn));
+              // Colgamos el clon en la lista de finalizados
+              completadas.appendChild(clonNodoLista);
+              // Borramos el li de la lista anterior
+              parentButton.remove();
+            },
+            false
+          );
+          // Colgamos el nuevo botón a la nueva tarea
+          nuevaTarea.appendChild(btnCompletada);
+          // Añadir el nuevo <li> a la lista <ul>
+          listaTareas.appendChild(nuevaTarea);
+          //Limpiamos el input después de agregar la tarea
+          inputTarea.value = '';
+          error.textContent = '';
+        } else {
+          //Si el input esta vacío, le mostramos una advertencia en un alerta
+          error.textContent = 'Por favor, escribe un tarea.';
+        }
+      });
+    </script>
+  </body>
+</html>
